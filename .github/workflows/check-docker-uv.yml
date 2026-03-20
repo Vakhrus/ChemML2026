@@ -26,7 +26,7 @@ jobs:
       - name: Определить директорию студента
         id: detect
         run: |
-          CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }} HEAD -- dir_1/)
+          CHANGED=$(git -c core.quotePath=false diff --name-only ${{ github.event.pull_request.base.sha }} HEAD -- dir_1/)
 
           if [ -z "$CHANGED" ]; then
             echo "Нет изменений в dir_1/"
